@@ -10,7 +10,7 @@
         public int Attack { get; } = GetEffectiveGenericStat(Base.Attack, IV.Attack, EV.Attack, Level, GetNatureBoost(Nature, StatName.Attack));
         public int Defense { get; } = GetEffectiveGenericStat(Base.Defense, IV.Defense, EV.Defense, Level, GetNatureBoost(Nature, StatName.Defense));
         public int SpecialAttack { get; } = GetEffectiveGenericStat(Base.SpecialAttack, IV.SpecialAttack, EV.SpecialAttack, Level, GetNatureBoost(Nature, StatName.SpecialAttack));
-        public int SpecialDefense { get; } = GetEffectiveGenericStat(Base.Attack, IV.SpecialDefense, EV.SpecialDefense, Level, GetNatureBoost(Nature, StatName.SpecialDefense));
+        public int SpecialDefense { get; } = GetEffectiveGenericStat(Base.SpecialDefense, IV.SpecialDefense, EV.SpecialDefense, Level, GetNatureBoost(Nature, StatName.SpecialDefense));
         public int Speed { get; } = GetEffectiveGenericStat(Base.Speed, IV.Speed, EV.Speed, Level, GetNatureBoost(Nature, StatName.Speed));
 
         private static int GetEffectiveHealthStat(int base_, int iv, int ev, Level lvl)

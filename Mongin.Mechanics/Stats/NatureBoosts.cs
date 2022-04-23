@@ -20,7 +20,7 @@
                 {
                     {
                         StatName.Attack,
-                        NatureStatChange.Unaffected
+                        NatureStatChange.Boosted
                     },
                     {
                         StatName.Defense,
@@ -28,7 +28,7 @@
                     },
                     {
                         StatName.SpecialAttack,
-                        NatureStatChange.Unaffected
+                        NatureStatChange.Weakened
                     },
                     {
                         StatName.SpecialDefense,
