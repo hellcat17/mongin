@@ -76,28 +76,30 @@ public class TestGrowth
     [TestMethod]
     public void TestGenVMaximumExperience()
     {
-        IGrowth growth = new GenVGrowth();
-        Assert.AreEqual(1640000, growth.GetMaximumExperience(GrowthRate.Fluctuating));
+        Assert.AreEqual(1640000, new GenVGrowth().GetMaximumExperience(GrowthRate.Fluctuating));
     }
 
     [TestMethod]
     public void TestGenVZeroMissingIfMoreThanRequired()
     {
-        IGrowth growth = new GenVGrowth();
-        Assert.AreEqual(0, growth.GetMissingExperience(GrowthRate.Fast, 1000, new(5)));
+        Assert.AreEqual(0, new GenVGrowth().GetMissingExperience(GrowthRate.Fast, 1000, new(5)));
     }
 
     [TestMethod]
     public void TestGenVMissingExperience()
     {
-        IGrowth growth = new GenVGrowth();
-        Assert.AreEqual(109, growth.GetMissingExperience(GrowthRate.Fast, 300, new(8)));
+        Assert.AreEqual(109, new GenVGrowth().GetMissingExperience(GrowthRate.Fast, 300, new(8)));
     }
 
     [TestMethod]
     public void TestGenVExperienceProgress()
     {
-        IGrowth growth = new GenVGrowth();
-        Assert.AreEqual(0.25, growth.GetExperienceProgress(GrowthRate.Fluctuating, 601, new(10)), 0.05);
+        Assert.AreEqual(0.25, new GenVGrowth().GetExperienceProgress(GrowthRate.Fluctuating, 601, new(10)), 0.05);
+    }
+
+    [TestMethod]
+    public void TestGenVExperienceProgressAtMaximumLevel()
+    {
+        Assert.AreEqual(0.0, new GenVGrowth().GetExperienceProgress(GrowthRate.Fluctuating, 601, new(Level.Maximum)), 0.01);
     }
 }
