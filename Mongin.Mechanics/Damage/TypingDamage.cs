@@ -5,14 +5,16 @@ namespace Mongin.Mechanics.Damage
     public static class TypingDamage
     {
         public static double GetMultiplier(Typing move, Typing defenderPrimary, Optional<Typing> defenderSecondary)
-        {
-            var first = TypeTable.Value[move][defenderPrimary];
-            var second = defenderSecondary
-                .Map<TypeEffectiveness>(t => TypeTable.Value[move][t])
-                .GetValueOr(TypeEffectiveness.Normal);
+            => GetMultiplier(
+                TypeTable.Value[move][defenderPrimary],
+                defenderSecondary.Map<TypeEffectiveness>(t => TypeTable.Value[move][t]));
 
-            return IsCancellingOut(first, second) ? 1.0 : MapMultiplier(first) * MapMultiplier(second);
-        }
+        public static double GetMultiplier(TypeEffectiveness primary, Optional<TypeEffectiveness> secondary)
+            => secondary.HasValue && IsCancellingOut(primary, secondary.GetValue())
+                ? 1.0
+                : secondary.HasValue
+                    ? MapMultiplier(primary) * MapMultiplier(secondary.GetValue())
+                    : MapMultiplier(primary);
 
         private static bool IsCancellingOut(TypeEffectiveness e1, TypeEffectiveness e2)
         {
