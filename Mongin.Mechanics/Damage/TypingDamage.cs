@@ -2,9 +2,9 @@
 
 namespace Mongin.Mechanics.Damage
 {
-    public static class TypingDamageMultiplier
+    public static class TypingDamage
     {
-        public static double Get(Typing move, Typing defenderPrimary, Optional<Typing> defenderSecondary)
+        public static double GetMultiplier(Typing move, Typing defenderPrimary, Optional<Typing> defenderSecondary)
         {
             var first = TypeTable.Value[move][defenderPrimary];
             var second = defenderSecondary
