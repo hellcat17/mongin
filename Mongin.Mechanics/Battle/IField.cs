@@ -28,13 +28,13 @@
         public bool HasLightScreen { get; set; } = false;
     }
 
-    public class Field
+    public interface IField
     {
-        public Weather Weather { get; set; } = Weather.Normal;
-        public bool IsMagicRoom { get; set; } = false;
-        public bool IsWonderRoom { get; set; } = false;
-        public bool HasStrongGravity { get; set; } = false;
-        public Side AttackerSide { get; set; } = new Side();
-        public Side DefenderSide { get; set; } = new Side();
+        Weather Weather { get; set; }
+        bool IsMagicRoom { get; set; }
+        bool IsWonderRoom { get; set; }
+        bool HasStrongGravity { get; set; }
+        Side AttackerSide { get; }
+        Side DefenderSide { get; }
     }
 }

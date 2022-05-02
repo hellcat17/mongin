@@ -9,7 +9,7 @@ namespace Mongin.Mechanics.Species
     public record Species
     {
         public Typing PrimaryType { get; init; }
-        public Optional<Typing> SecondaryType { get; init; } = new();
+        public Typing? SecondaryType { get; init; }
         public BaseStats BaseStats { get; init; } = new();
         public ImmutableArray<IAbility> Abilities { get; init; }
         public ImmutableDictionary<Level, ImmutableArray<IMove>> Learnset { get; init; } = ImmutableDictionary<Level, ImmutableArray<IMove>>.Empty;

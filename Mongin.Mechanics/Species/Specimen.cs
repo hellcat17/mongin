@@ -1,5 +1,5 @@
-﻿using Mongin.Mechanics.Stats;
-using Mongin.Mechanics.Utils;
+﻿using Mongin.Mechanics.Item;
+using Mongin.Mechanics.Stats;
 
 namespace Mongin.Mechanics.Species
 {
@@ -16,7 +16,8 @@ namespace Mongin.Mechanics.Species
         public Friendship Friendship { get; private set; }
 
         public int HealthPoints { get; private set; }
-        public Optional<StatusCondition> StatusCondition { get; private set; }
+        public StatusCondition? StatusCondition { get; private set; }
+        public IItem? HeldItem { get; private set; }
         public EffectiveStats Stats
         {
             get { return new EffectiveStats(Species.BaseStats, Genetics, Effort, Level, Nature); }
@@ -24,7 +25,7 @@ namespace Mongin.Mechanics.Species
 
         public Specimen(
             Species species, IndividualValues ivs, Nature nature, Gender gender, IAbility ability, Level level, int exp,
-            EffortValues? evs = null, Friendship? friendShip = null, int? hp = null, StatusCondition? status = null)
+            EffortValues? evs = null, Friendship? friendShip = null, int? hp = null, StatusCondition? status = null, IItem? heldItem = null)
         {
             Species = species;
             Genetics = ivs;
@@ -36,7 +37,8 @@ namespace Mongin.Mechanics.Species
             Effort = evs ?? new EffortValues(0, 0, 0, 0, 0, 0);
             Friendship = friendShip ?? species.BaseFriendship;
             HealthPoints = hp ?? new EffectiveStats(species.BaseStats, ivs, Effort, level, nature).HP;
-            StatusCondition = status ?? new();
+            StatusCondition = status;
+            HeldItem = heldItem;
         }
     }
 }

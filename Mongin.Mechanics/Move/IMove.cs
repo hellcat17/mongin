@@ -19,6 +19,7 @@
         int BasePower { get; }
         int Priority { get; }
         HitCount HitCount { get; }
+        int Id { get; }
         string Name { get; }
     }
 }

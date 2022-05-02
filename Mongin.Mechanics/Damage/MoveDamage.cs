@@ -52,11 +52,11 @@ namespace Mongin.Mechanics.Damage
             DamageRange range,
             MoveDamageConditions conditions,
             TypeEffectiveness primaryEffectiveness,
-            Optional<TypeEffectiveness> secondaryEffectiveness,
+            TypeEffectiveness? secondaryEffectiveness,
             double otherMultipliers)
         {
             if (primaryEffectiveness == TypeEffectiveness.NoEffect ||
-                secondaryEffectiveness.GetValueOr(TypeEffectiveness.Normal) == TypeEffectiveness.NoEffect)
+                (secondaryEffectiveness ?? TypeEffectiveness.Normal) == TypeEffectiveness.NoEffect)
             {
                 return 0;
             }

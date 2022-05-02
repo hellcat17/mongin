@@ -45,7 +45,7 @@ namespace Mongin.Mechanics.Damage
         /// <param name="secondary">Optional secondary type of the specimen</param>
         /// <param name="maxHP">Maximum HP (effective HP stat) of the specimen</param>
         /// <returns>Absolute damage received</returns>
-        public static int GetDamagePerTurn(Weather condition, Typing primary, Optional<Typing> secondary, int maxHP)
+        public static int GetDamagePerTurn(Weather condition, Typing primary, Typing? secondary, int maxHP)
         {
             if (ReceivesWeatherDamage(condition, primary, secondary))
             {
@@ -57,12 +57,12 @@ namespace Mongin.Mechanics.Damage
         private readonly static Typing[] HailResistentTypes = { Typing.Ice };
         private readonly static Typing[] SandstormResistentTypes = { Typing.Rock, Typing.Ground, Typing.Steel };
 
-        private static bool ContainsResistentType(Typing[] resists, Typing primary, Optional<Typing> secondary)
+        private static bool ContainsResistentType(Typing[] resists, Typing primary, Typing? secondary)
             => Array.IndexOf(resists, primary) != -1
-            || secondary.Map<int>(t => Array.IndexOf(resists, t)).GetValueOr(-1) != -1;
+            || (secondary.Map(t => Array.IndexOf(resists, t)) ?? -1) != -1;
 
 
-        private static bool ReceivesWeatherDamage(Weather condition, Typing primary, Optional<Typing> secondary)
+        private static bool ReceivesWeatherDamage(Weather condition, Typing primary, Typing? secondary)
             => condition switch
             {
                 Weather.Hail => !ContainsResistentType(HailResistentTypes, primary, secondary),
