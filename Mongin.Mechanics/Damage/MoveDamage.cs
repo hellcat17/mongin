@@ -17,7 +17,7 @@ namespace Mongin.Mechanics.Damage
         public int Value { get; }
             = Range >= Minimum && Range <= Maximum
                 ? Range
-                : throw new ArgumentException($"Damage range must be between {Minimum}-{Maximum}, but got {Range}", nameof(Range));
+                : throw new ArgumentException($"Damage range must be between {Minimum} and {Maximum}, but got {Range}", nameof(Range));
     }
 
     public static class MoveDamage

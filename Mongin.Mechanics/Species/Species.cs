@@ -13,6 +13,7 @@ namespace Mongin.Mechanics.Species
         public BaseStats BaseStats { get; init; } = new();
         public ImmutableArray<IAbility> Abilities { get; init; }
         public ImmutableDictionary<Level, ImmutableArray<IMove>> Learnset { get; init; } = ImmutableDictionary<Level, ImmutableArray<IMove>>.Empty;
+        public ImmutableArray<IMove> CompatibleMoves { get; init; }
         public GrowthRate GrowthRate { get; init; }
         public EffortValueYield EVYield { get; init; } = new(0, 0, 0, 0, 0);
         public int ExperienceYield { get; init; }

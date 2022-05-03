@@ -14,7 +14,6 @@ namespace Mongin.Mechanics.Species
         public int ExperiencePoints { get; private set; }
         public EffortValues Effort { get; private set; }
         public Friendship Friendship { get; private set; }
-
         public int HealthPoints { get; private set; }
         public StatusCondition? StatusCondition { get; private set; }
         public IItem? HeldItem { get; private set; }
