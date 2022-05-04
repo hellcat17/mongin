@@ -35,7 +35,7 @@ namespace Mongin.Mechanics.Species
             ExperiencePoints = exp;
             Effort = evs ?? new EffortValues(0, 0, 0, 0, 0, 0);
             Friendship = friendShip ?? species.BaseFriendship;
-            HealthPoints = hp ?? new EffectiveStats(species.BaseStats, ivs, Effort, level, nature).HP;
+            HealthPoints = hp ?? Stats.HP;
             StatusCondition = status;
             HeldItem = heldItem;
         }
